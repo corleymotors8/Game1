@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class PlatformEnemySpawn : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class PlatformEnemySpawn : MonoBehaviour
     public float spawnCooldown = 2f; // Set cooldown time (e.g., 2 seconds)
 
     private AudioSource audioSource;
+    public AudioClip quackSpawn;
+    private List<GameObject> spawnedEnemies = new List<GameObject>();
+
 
     void Start()
     {
@@ -43,14 +47,29 @@ public class PlatformEnemySpawn : MonoBehaviour
         GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
         Rigidbody2D enemyRb = enemy.GetComponent<Rigidbody2D>();
         enemyRb.gravityScale = 20;
+        audioSource.PlayOneShot(quackSpawn);
+        spawnedEnemies.Add(enemy); // add spawned enemy to List
+        Debug.Log("Spawned Enemy added to list" + spawnedEnemies.Count);
 
         Enemy1Script enemyScript = enemy.GetComponent<Enemy1Script>();
+        enemyScript.destroyAfter = true;  // ✅ Set the destroyAfter variable to true
+
 
     if (enemyScript != null)
     {
         enemyScript.StartMoving();  
     }
     }
+
+    public void DestroyAllEnemies()
+    {
+    foreach (GameObject enemy in spawnedEnemies)
+    {
+        Destroy(enemy, 0.5f);
+    }
+    spawnedEnemies.Clear();  // Clear the list after destroying
+}
+
 }
 
     

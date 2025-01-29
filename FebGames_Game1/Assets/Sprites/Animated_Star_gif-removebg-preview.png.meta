@@ -1,0 +1,851 @@
+fileFormatVersion: 2
+guid: 67b73aab512d346a48496b4f14a8b2eb
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2293184753787108850
+    second: Animated_Star_gif-removebg-preview_0
+  - first:
+      213: 2659685878739624902
+    second: Animated_Star_gif-removebg-preview_1
+  - first:
+      213: 540032778783710786
+    second: Animated_Star_gif-removebg-preview_2
+  - first:
+      213: -4982234371132361229
+    second: Animated_Star_gif-removebg-preview_3
+  - first:
+      213: -731257866255003269
+    second: Animated_Star_gif-removebg-preview_4
+  - first:
+      213: -3129010585382279346
+    second: Animated_Star_gif-removebg-preview_5
+  - first:
+      213: 2164120499064475141
+    second: Animated_Star_gif-removebg-preview_6
+  - first:
+      213: 6736881773981673805
+    second: Animated_Star_gif-removebg-preview_7
+  - first:
+      213: -4779958478376427942
+    second: Animated_Star_gif-removebg-preview_8
+  - first:
+      213: 8984313313649104693
+    second: Animated_Star_gif-removebg-preview_9
+  - first:
+      213: -7229965419141553683
+    second: Animated_Star_gif-removebg-preview_10
+  - first:
+      213: 7517983233031655737
+    second: Animated_Star_gif-removebg-preview_11
+  - first:
+      213: -8714177779824883432
+    second: Animated_Star_gif-removebg-preview_12
+  - first:
+      213: -6980217958219853264
+    second: Animated_Star_gif-removebg-preview_13
+  - first:
+      213: 2398655691847321600
+    second: Animated_Star_gif-removebg-preview_14
+  - first:
+      213: 1230107424626029877
+    second: Animated_Star_gif-removebg-preview_15
+  - first:
+      213: 3037082953028676616
+    second: Animated_Star_gif-removebg-preview_16
+  - first:
+      213: 3510688374527273482
+    second: Animated_Star_gif-removebg-preview_17
+  - first:
+      213: -6336501577905525588
+    second: Animated_Star_gif-removebg-preview_18
+  - first:
+      213: 7477947075091714717
+    second: Animated_Star_gif-removebg-preview_19
+  - first:
+      213: -8329408796674222062
+    second: Animated_Star_gif-removebg-preview_20
+  - first:
+      213: 3429260588642870873
+    second: Animated_Star_gif-removebg-preview_21
+  - first:
+      213: -1024092199158960679
+    second: Animated_Star_gif-removebg-preview_22
+  - first:
+      213: 2334313251548404696
+    second: Animated_Star_gif-removebg-preview_23
+  - first:
+      213: 2794444643324916123
+    second: Animated_Star_gif-removebg-preview_24
+  - first:
+      213: 6467232619477528710
+    second: Animated_Star_gif-removebg-preview_25
+  - first:
+      213: -5507317372088142569
+    second: Animated_Star_gif-removebg-preview_26
+  - first:
+      213: 3266214902168753153
+    second: Animated_Star_gif-removebg-preview_27
+  - first:
+      213: -3429414136210178478
+    second: Animated_Star_gif-removebg-preview_28
+  - first:
+      213: -4511004025807690966
+    second: Animated_Star_gif-removebg-preview_29
+  - first:
+      213: -7767037902999504988
+    second: Animated_Star_gif-removebg-preview_30
+  - first:
+      213: -8192561570297906787
+    second: Animated_Star_gif-removebg-preview_31
+  - first:
+      213: -7860005676158989687
+    second: Animated_Star_gif-removebg-preview_32
+  - first:
+      213: 3878153962497106809
+    second: Animated_Star_gif-removebg-preview_33
+  - first:
+      213: 3950513549555618948
+    second: Animated_Star_gif-removebg-preview_34
+  - first:
+      213: 3455402019595433760
+    second: Animated_Star_gif-removebg-preview_35
+  - first:
+      213: 5312992227302471533
+    second: Animated_Star_gif-removebg-preview_36
+  - first:
+      213: 2666953573282133238
+    second: Animated_Star_gif-removebg-preview_37
+  - first:
+      213: 2947720346880579930
+    second: Animated_Star_gif-removebg-preview_38
+  - first:
+      213: 6457139339967220560
+    second: Animated_Star_gif-removebg-preview_39
+  - first:
+      213: -8153961746400184147
+    second: Animated_Star_gif-removebg-preview_40
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Animated_Star_gif-removebg-preview_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 410
+        width: 85
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fd72dd326703df10800000000000000
+      internalID: 2293184753787108850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated_Star_gif-removebg-preview_1
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 410
+        width: 85
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c3e560173a19e420800000000000000
+      internalID: 2659685878739624902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated_Star_gif-removebg-preview_2
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 410
+        width: 85
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24e587a73f49e7700800000000000000
+      internalID: 540032778783710786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated_Star_gif-removebg-preview_3
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 410
+        width: 85
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f5f9e88c3c8bdab0800000000000000
+      internalID: -4982234371132361229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated_Star_gif-removebg-preview_4
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 410
+        width: 85
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7119a258dc0ad5f0800000000000000
+      internalID: -731257866255003269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated_Star_gif-removebg-preview_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 330
+        width: 85
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e472ad763758394d0800000000000000
+      internalID: -3129010585382279346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated_Star_gif-removebg-preview_6
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 330
+        width: 85
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50e01edb020880e10800000000000000
+      internalID: 2164120499064475141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated_Star_gif-removebg-preview_7
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 330
+        width: 85
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d492bf7a7463e7d50800000000000000
+      internalID: 6736881773981673805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated_Star_gif-removebg-preview_8
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 330
+        width: 85
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5e9147d61d2aadb0800000000000000
+      internalID: -4779958478376427942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated_Star_gif-removebg-preview_9
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 330
+        width: 85
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 568736892a50c471aaa509c035fa78fc
+      internalID: 8984313313649104693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated_Star_gif-removebg-preview_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 250
+        width: 85
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b11491e647fd4f0a8e0c88c36764fc0
+      internalID: -7229965419141553683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated_Star_gif-removebg-preview_11
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 250
+        width: 85
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2704bcc211ba4eaa987a58c5b9a43cf
+      internalID: 7517983233031655737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated_Star_gif-removebg-preview_12
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 250
+        width: 85
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c5968bc00d58425e942c4d994d31e47
+      internalID: -8714177779824883432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated_Star_gif-removebg-preview_13
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 250
+        width: 85
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b234330e2c3574f9ab2f0ef8ca366a15
+      internalID: -6980217958219853264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated_Star_gif-removebg-preview_14
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 250
+        width: 85
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bde289f23b284464b866ae152e97b59
+      internalID: 2398655691847321600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated_Star_gif-removebg-preview_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 170
+        width: 85
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fcd3471b481044b38392728574b075e
+      internalID: 1230107424626029877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated_Star_gif-removebg-preview_16
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 170
+        width: 85
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 749f3dff1a75e4e83bcf61dabdedce7d
+      internalID: 3037082953028676616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated_Star_gif-removebg-preview_17
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 170
+        width: 85
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c93fbf3e0edb49a7b1de02cd82bdf2d
+      internalID: 3510688374527273482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated_Star_gif-removebg-preview_18
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 170
+        width: 85
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 987ddd30650714b3cb7b06d1c8c40ac4
+      internalID: -6336501577905525588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated_Star_gif-removebg-preview_19
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 170
+        width: 85
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd154c9ef80cd46c9a1423da03788297
+      internalID: 7477947075091714717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated_Star_gif-removebg-preview_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 90
+        width: 85
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04f1b37a1a868474bbc2ab00480c73b7
+      internalID: -8329408796674222062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated_Star_gif-removebg-preview_21
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 90
+        width: 85
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff7c0b68c212c4ff989d4d572b3b4ae7
+      internalID: 3429260588642870873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated_Star_gif-removebg-preview_22
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 90
+        width: 85
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b724d39466a74ed5a0be0bce288b675
+      internalID: -1024092199158960679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated_Star_gif-removebg-preview_23
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 90
+        width: 85
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50e76d072e7404459adf843e9d3c0a78
+      internalID: 2334313251548404696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated_Star_gif-removebg-preview_24
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 90
+        width: 85
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f628c1f27c92446769ab2d521b43dd74
+      internalID: 2794444643324916123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Animated_Star_gif-removebg-preview_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 10
+        width: 85
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bad31b5b2e42b4e6ba28890432498afe
+      internalID: 6467232619477528710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: beb29108ecd85483c86a06175e20e3d8
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Animated_Star_gif-removebg-preview_0: 2293184753787108850
+      Animated_Star_gif-removebg-preview_1: 2659685878739624902
+      Animated_Star_gif-removebg-preview_10: -7229965419141553683
+      Animated_Star_gif-removebg-preview_11: 7517983233031655737
+      Animated_Star_gif-removebg-preview_12: -8714177779824883432
+      Animated_Star_gif-removebg-preview_13: -6980217958219853264
+      Animated_Star_gif-removebg-preview_14: 2398655691847321600
+      Animated_Star_gif-removebg-preview_15: 1230107424626029877
+      Animated_Star_gif-removebg-preview_16: 3037082953028676616
+      Animated_Star_gif-removebg-preview_17: 3510688374527273482
+      Animated_Star_gif-removebg-preview_18: -6336501577905525588
+      Animated_Star_gif-removebg-preview_19: 7477947075091714717
+      Animated_Star_gif-removebg-preview_2: 540032778783710786
+      Animated_Star_gif-removebg-preview_20: -8329408796674222062
+      Animated_Star_gif-removebg-preview_21: 3429260588642870873
+      Animated_Star_gif-removebg-preview_22: -1024092199158960679
+      Animated_Star_gif-removebg-preview_23: 2334313251548404696
+      Animated_Star_gif-removebg-preview_24: 2794444643324916123
+      Animated_Star_gif-removebg-preview_25: 6467232619477528710
+      Animated_Star_gif-removebg-preview_3: -4982234371132361229
+      Animated_Star_gif-removebg-preview_4: -731257866255003269
+      Animated_Star_gif-removebg-preview_5: -3129010585382279346
+      Animated_Star_gif-removebg-preview_6: 2164120499064475141
+      Animated_Star_gif-removebg-preview_7: 6736881773981673805
+      Animated_Star_gif-removebg-preview_8: -4779958478376427942
+      Animated_Star_gif-removebg-preview_9: 8984313313649104693
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

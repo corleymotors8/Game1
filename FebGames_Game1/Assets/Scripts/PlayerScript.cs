@@ -8,6 +8,9 @@ public class PlayerScript : MonoBehaviour
 {
     public AudioClip landSound;
     public AudioClip[] jumpSounds;
+    public AudioClip deathSound;
+
+    private Vector3 respawnPosition;
     public float footstepVolume = 1.0f; // Public variable to control volume (default is max: 1.0)
     public float jumpVolume = 1.0f; // Public variable to control volume (default is max: 1.0)
     public float landVolume = 1.0f; // Public variable to control volume (default is max: 1.0)
@@ -77,15 +80,37 @@ private void Flip()
    }
    }
 
+  
    private void OnCollisionEnter2D(Collision2D collision)
    {
+        // Jump Detection
        if (collision.gameObject.CompareTag("Ground"))
        {
            isGrounded = true;
            //animator.SetBool("isJumping", !isGrounded);
             audioSource.PlayOneShot(landSound, landVolume);
        }
+       // Enemyy Detection
+       if (collision.gameObject.CompareTag("Enemy"))
+       {
+        audioSource.PlayOneShot(deathSound, 0.1f);
+        Invoke("DestroyPlayer", 0.1f);
+       }
    }
+
+void DestroyPlayer()
+{
+    GameManager gameManager = GameObject.FindFirstObjectByType<GameManager>();
+    if (gameManager != null)
+    {
+        // Notify the Game Manager to handle player death before destroying the object
+        gameManager.PlayerDied();
+    }
+
+    // Now destroy the object
+    Destroy(this.gameObject, 0.1f);
+}
+
    public void PlayFootstepSound()
 {
     if (isGrounded && footstepSounds.Length > 0)

@@ -7,12 +7,15 @@ public class KillZone : MonoBehaviour
    public AudioClip killSound;
    public GameObject landingPlatform;
    public GameObject bloodPrefab;
+   private GameManager gameManager;
    
 
    void Start()
    {
          audioSource = GetComponent<AudioSource>();
          audioSource = gameObject.AddComponent<AudioSource>();
+        gameManager = GameObject.FindFirstObjectByType<GameManager>();
+
    }
 
 
@@ -43,7 +46,9 @@ public class KillZone : MonoBehaviour
         Debug.LogWarning("Blood Prefab is not assigned!");
     }
 
-    // Destroy the player GameObject
+    // Call the Game Manager PlayerDied function and Destroy the player GameObject
+    
+    gameManager?.PlayerDied();
     Destroy(player);
 }
 }

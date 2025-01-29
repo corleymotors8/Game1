@@ -28,7 +28,7 @@ public class Cannon : MonoBehaviour
 
     void Update()
     {
-        bool enemyAboveThreshold = (enemy != null && enemy.isRising && enemy.transform.position.y > -2.5f);
+        bool enemyAboveThreshold = (enemy != null && enemy.isRising && enemy.transform.position.y > -0.5f);
 
         // Fire only if the player is in range and the cooldown has passed
         if (isPlayerInRange && enemyAboveThreshold && Time.time >= nextFireTime)

@@ -7,6 +7,8 @@
         private Rigidbody2D rb;
         public bool chasePlayer = false;
         private bool moveLeft = true;
+
+        public bool destroyAfter = false;
         
         // Store platform boundaries for enemy movement
         private float leftBound;
@@ -49,6 +51,14 @@
         else
         {
         rb.linearVelocity = new Vector2(speed, 0); // Constant movement to the right
+        }
+    }
+
+    void OnCollisionEnter2D (Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player") && destroyAfter)
+        {
+        FindFirstObjectByType<PlatformEnemySpawn>().DestroyAllEnemies();
         }
     }
     
