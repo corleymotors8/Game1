@@ -6,7 +6,13 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
+    public AudioClip landSound;
     public AudioClip[] jumpSounds;
+    public float footstepVolume = 1.0f; // Public variable to control volume (default is max: 1.0)
+    public float jumpVolume = 1.0f; // Public variable to control volume (default is max: 1.0)
+    public float landVolume = 1.0f; // Public variable to control volume (default is max: 1.0)
+
+
     public AudioClip[] footstepSounds; // Assign your footstep sounds in the Inspector
     private AudioSource audioSource; // Reference to the AudioSource
    private bool isFacingRight = true;
@@ -49,7 +55,7 @@ public class PlayerScript : MonoBehaviour
             isGrounded = false;
             //animator.SetBool("isJumping", !isGrounded);
            int randomIndex = UnityEngine.Random.Range(0, jumpSounds.Length); // Pick a random sound
-           audioSource.PlayOneShot(jumpSounds[randomIndex]); // Play the sound
+           audioSource.PlayOneShot(jumpSounds[randomIndex], jumpVolume); // Play the sound
         }
 }
 private void Flip()
@@ -77,6 +83,7 @@ private void Flip()
        {
            isGrounded = true;
            //animator.SetBool("isJumping", !isGrounded);
+            audioSource.PlayOneShot(landSound, landVolume);
        }
    }
    public void PlayFootstepSound()
@@ -84,7 +91,7 @@ private void Flip()
     if (isGrounded && footstepSounds.Length > 0)
     {
         int randomIndex = UnityEngine.Random.Range(0, footstepSounds.Length); // Pick a random sound
-        audioSource.PlayOneShot(footstepSounds[randomIndex]); // Play the sound
+        audioSource.PlayOneShot(footstepSounds[randomIndex], footstepVolume); // Play the sound
     }
 }
 }
