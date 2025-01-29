@@ -9,6 +9,7 @@ public class PlayerScript : MonoBehaviour
     public AudioClip landSound;
     public AudioClip[] jumpSounds;
     public AudioClip deathSound;
+    public AudioClip stompSound;
 
     private Vector3 respawnPosition;
     public float footstepVolume = 1.0f; // Public variable to control volume (default is max: 1.0)
@@ -91,11 +92,23 @@ private void Flip()
             audioSource.PlayOneShot(landSound, landVolume);
        }
        // Enemyy Detection
-       if (collision.gameObject.CompareTag("Enemy"))
-       {
+        if (collision.gameObject.CompareTag("Enemy"))
+    {
+        // Check if StompCheck exists and enemy has been stomped
+        var stompCheck = collision.gameObject.GetComponentInChildren<StompCheck>();
+        if (stompCheck != null && stompCheck.isStomped)
+        {
+            audioSource.PlayOneShot(stompSound);
+            Debug.Log("Player avoided death by stomping the enemy!");
+            stompCheck.isStomped = false;
+            Debug.Log("Resetting stomp check to false");
+            return;  // Skip death logic if enemy was stomped
+        }
+
+        // Trigger player death if not stomped
         audioSource.PlayOneShot(deathSound, 0.1f);
         Invoke("DestroyPlayer", 0.1f);
-       }
+    }
    }
 
 void DestroyPlayer()
