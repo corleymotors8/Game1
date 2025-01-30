@@ -45,6 +45,14 @@ public class StarScript : MonoBehaviour
 
         // Step 3: After 3 seconds, play winJump sound and move player
         Invoke("PlayWinJumpAndMovePlayer", 3);
+
+        // Step 4: After 4 seconds, call win game function in Game GameManager
+        Invoke("playLastText", 4f);
+    }
+
+    void playLastText()
+    {
+        FindFirstObjectByType<GameManager>().WinGame();
     }
 
     void DestroyStarAndPlayGetStar()

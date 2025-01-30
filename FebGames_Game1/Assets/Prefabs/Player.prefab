@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2265414191887722547
 Transform:
   m_ObjectHideFlags: 0
@@ -70,6 +70,7 @@ GameObject:
   - component: {fileID: 7246375765119493207}
   - component: {fileID: 663183924675537963}
   - component: {fileID: 7862365431029541531}
+  - component: {fileID: 6019054754691989040}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -86,7 +87,7 @@ Transform:
   m_GameObject: {fileID: 7311129963460842868}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.44, y: -5.94, z: 0}
+  m_LocalPosition: {x: 10.39, y: 1.93, z: 0}
   m_LocalScale: {x: 4.57, y: 4.57, z: 4.57}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -263,8 +264,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6162c326d00d949999d52f20f1bf123e, type: 3}
   - {fileID: 8300000, guid: 04b862863dd1c4be4bf7653b1a316b02, type: 3}
   deathSound: {fileID: 8300000, guid: 3568fd676eae64b7faeec8a7f4be981a, type: 3}
-  respawnSound: {fileID: 0}
-  playerPrefab: {fileID: 0}
+  stompSound: {fileID: 8300000, guid: 7d54088ccf2be48848c39f65aa287edc, type: 3}
   footstepVolume: 0.1
   jumpVolume: 0.1
   landVolume: 0.1
@@ -311,3 +311,22 @@ CapsuleCollider2D:
   m_Offset: {x: 0.004544701, y: -0.13838595}
   m_Size: {x: 0.16501741, y: 0.060494438}
   m_Direction: 1
+--- !u!114 &6019054754691989040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7311129963460842868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188ecda7daf7a4c8d9c5534465cc5843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lives:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  LivesRemaining: 5

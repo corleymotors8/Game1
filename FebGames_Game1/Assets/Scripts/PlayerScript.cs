@@ -91,7 +91,7 @@ private void Flip()
            //animator.SetBool("isJumping", !isGrounded);
             audioSource.PlayOneShot(landSound, landVolume);
        }
-       // Enemyy Detection
+       // Enemy Detection
         if (collision.gameObject.CompareTag("Enemy"))
     {
         // Check if StompCheck exists and enemy has been stomped
@@ -106,6 +106,8 @@ private void Flip()
         }
 
         // Trigger player death if not stomped
+        GameObject.FindFirstObjectByType<LifeCountScript>().LoseLife();
+        Debug.Log("Lose Life called");
         audioSource.PlayOneShot(deathSound, 0.1f);
         Invoke("DestroyPlayer", 0.1f);
     }
@@ -120,8 +122,8 @@ void DestroyPlayer()
         gameManager.PlayerDied();
     }
 
-    // Now destroy the object
-    Destroy(this.gameObject, 0.1f);
+    // Now make player invisible
+    GetComponent<SpriteRenderer>().enabled = false;
 }
 
    public void PlayFootstepSound()
