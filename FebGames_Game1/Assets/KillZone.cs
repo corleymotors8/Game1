@@ -46,9 +46,11 @@ public class KillZone : MonoBehaviour
         Debug.LogWarning("Blood Prefab is not assigned!");
     }
 
-    // Call the Game Manager PlayerDied function and Destroy the player GameObject
+    // Call the lose-life Enemy2Script
+    GameObject.FindFirstObjectByType<LifeCountScript>().LoseLife();
     
+    // Call the Game Manager PlayerDied function and Destroy the player GameObject
     gameManager?.PlayerDied();
-    Destroy(player);
+    GetComponent<SpriteRenderer>().enabled = false;;
 }
 }

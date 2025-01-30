@@ -49,8 +49,11 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+        // Stop background music    
+        GameObject.Find("BackgroundMusic").GetComponent<AudioSource>().Stop();
+
         // Play Game Over music
-        audioSource.PlayOneShot(gameOver);
+        audioSource.PlayOneShot(gameOver, .4f);
 
         // Hide all objects
         HideAllGameObjects();  
@@ -101,6 +104,7 @@ public class GameManager : MonoBehaviour
 
     public void WinGame()
     {
+        GameObject.Find("BackgroundMusic").GetComponent<AudioSource>().Stop();
         audioSource.PlayOneShot(winSound);
         youWinText.SetActive(true);
         HideAllGameObjects();
