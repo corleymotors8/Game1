@@ -64,7 +64,6 @@ void Update()
         // Stop falling when it reaches the falling position
         if (GetComponent<Collider2D>().bounds.min.y <= fallingPosition)
         {
-            //transform.position = new Vector3(transform.position.x, fallingPosition, transform.position.z); // Snap to the target position
             isFalling = false;
             audioSource.PlayOneShot(landSound, landVolume);
             StartCoroutine(WaitAndRise());

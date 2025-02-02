@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlatformTrigger : MonoBehaviour
 {
-    public Enemy1Script enemy; // Assign the enemy script in the Inspector
+    public Enemy1Script enemy; // Assign the Enemy1 script in the Inspector
 
     private float leftBound;
     private float rightBound;
@@ -17,8 +17,10 @@ public class PlatformTrigger : MonoBehaviour
     {
         if (collision.CompareTag("Player")) // Check if the player lands
         {
+            Debug.Log("Platform entered");
             enemy.StartMoving(); // Call a method in the enemy script to start moving
             enemy.SetBounds(leftBound, rightBound); // Set the bounds of the enemy's movement
+            Debug.Log(leftBound + rightBound);
         }
     }
 }

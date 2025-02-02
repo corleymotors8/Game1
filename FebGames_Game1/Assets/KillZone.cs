@@ -14,7 +14,7 @@ public class KillZone : MonoBehaviour
    {
          audioSource = GetComponent<AudioSource>();
          audioSource = gameObject.AddComponent<AudioSource>();
-        gameManager = GameObject.FindFirstObjectByType<GameManager>();
+         gameManager = GameObject.FindFirstObjectByType<GameManager>();
 
    }
 
@@ -46,11 +46,12 @@ public class KillZone : MonoBehaviour
         Debug.LogWarning("Blood Prefab is not assigned!");
     }
 
-    // Call the lose-life Enemy2Script
+    // Call the lose-life script
     GameObject.FindFirstObjectByType<LifeCountScript>().LoseLife();
     
-    // Call the Game Manager PlayerDied function and Destroy the player GameObject
+    // Call the Game Manager PlayerDied function and "destroy" the player 
     gameManager?.PlayerDied();
     GetComponent<SpriteRenderer>().enabled = false;;
+    
 }
 }

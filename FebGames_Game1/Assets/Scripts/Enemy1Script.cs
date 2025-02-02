@@ -3,7 +3,16 @@
    public class Enemy1Script : MonoBehaviour
     {
         public float speed;
-        public bool shouldMove = false;
+       public bool shouldMove
+{
+    get { return _shouldMove; }
+    set
+    {
+        Debug.Log($"{gameObject.name}: shouldMove changed to {value}");
+        _shouldMove = value;
+    }
+}
+private bool _shouldMove = false;
         private Rigidbody2D rb;
         public bool chasePlayer = false;
         public bool groundEnemy = false;
@@ -73,6 +82,23 @@
         {
         rb.linearVelocity = new Vector2(speed, 0); // Constant movement to the right
         }
+
+        if (shouldMove)
+{
+    Debug.Log($"Enemy Debug Log - " +
+              $"ShouldMove: {shouldMove}, " +
+              $"Speed: {speed}, " +
+              $"Velocity: {rb.linearVelocity}, " +
+              $"Position: {transform.position}, " +
+              $"LeftBound: {leftBound}, " +
+              $"RightBound: {rightBound}, " +
+              $"MoveLeft: {moveLeft}, " +
+              $"Moved: {moved}, " +
+              $"Direction: {direction}, " +
+              $"GroundEnemy: {groundEnemy}, " +
+              $"ChasePlayer: {chasePlayer}, " +
+              $"GravityScale: {rb.gravityScale}");
+}
     }
 
     // Destroy platform enemies on player death
@@ -86,7 +112,9 @@
     
     public void StartMoving()
 {
+    Debug.Log("Start moving = true");
     shouldMove = true;
+    Debug.Log("Should move = " + shouldMove);
 }
 
 public void SetBounds(float left, float right)
@@ -94,6 +122,7 @@ public void SetBounds(float left, float right)
     leftBound = left + 0.5f; // Add a buffer to the left bound
     rightBound = right - 0.5f; // Add a buffer to the right bound
 }
+
     }
 
     

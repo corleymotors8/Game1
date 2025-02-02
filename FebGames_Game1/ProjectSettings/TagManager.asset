@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - EnemyHead
   - PlayerFeet
+  - RideableEnemy
   layers:
   - Default
   - TransparentFX

@@ -10,9 +10,12 @@ public class StarScript : MonoBehaviour
     private Transform playerTransform;
     private Rigidbody2D playerRb;
     public GameObject player;
+    private Timer timerUI;
 
     void Start()
     {
+        timerUI = FindFirstObjectByType<Timer>();
+
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
@@ -39,6 +42,12 @@ public class StarScript : MonoBehaviour
         {
             playerRb.constraints = RigidbodyConstraints2D.FreezePosition;
         }
+
+        // Stop the timerscript
+            if (timerUI != null)
+    {
+        timerUI.isGameWonOrLost = true;
+    }
 
         // Step 2: After 2 seconds, destroy star and play getStar sound
         Invoke("DestroyStarAndPlayGetStar", 2);

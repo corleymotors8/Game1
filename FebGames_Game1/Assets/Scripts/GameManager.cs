@@ -14,7 +14,8 @@ public class GameManager : MonoBehaviour
     private bool isRespawning = false;
     public GameObject gameOverText;  // Assign your "GAME OVER" text GameObject here
     public GameObject youWinText;
-    public float gameOverDelay = 5f;  // Time to wait before returning to the menu
+    private Timer timerUI;
+    public float gameOverDelay = 7f;  // Time to wait before returning to the menu
 
     void Awake()
     {
@@ -24,6 +25,11 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
+        
+        //Find the timer
+        timerUI = FindFirstObjectByType<Timer>();
+        // reset isGameWonOrLost
+        timerUI.isGameWonOrLost = false;
         
         // InitializeLives(playerLives);
 
@@ -45,7 +51,7 @@ public class GameManager : MonoBehaviour
         {
             playerLives--;
             Debug.Log("Player died. Remaining lives: " + playerLives);
-            Invoke("RespawnPlayer", 1.0f);
+            Invoke("RespawnPlayer", 0.1f);
         }
         else
         {
@@ -72,6 +78,9 @@ public class GameManager : MonoBehaviour
     // Coroutine to handle delay and return to menu
     private IEnumerator GameOverSequence()
     {
+        //Stop timer
+        timerUI.isGameWonOrLost = true;
+        
         // Wait for a few seconds
         yield return new WaitForSeconds(gameOverDelay);
 
@@ -81,10 +90,14 @@ public class GameManager : MonoBehaviour
 
     void RespawnPlayer()
     {
-        Debug.Log("Player respawned");
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
         audioSource.PlayOneShot(respawnSound, 0.3f);
-         GameObject player = GameObject.FindWithTag("Player");  // Find player by tag
-        player.transform.position = new Vector3(-12.5f, -6.7f, 0);  // Move player to respawn location
+        GameObject player = GameObject.FindWithTag("Player");  // Find player by tag
+        player.transform.position = respawnPosition;  // Move player to respawn location
         player.GetComponent<SpriteRenderer>().enabled = true;  // Make the player visible
         isRespawning = false;  // Reset respawn flag
 
@@ -101,12 +114,13 @@ public class GameManager : MonoBehaviour
         renderer.enabled = false;
     }
 }
-
     public void WinGame()
     {
         GameObject.Find("BackgroundMusic").GetComponent<AudioSource>().Stop();
         audioSource.PlayOneShot(winSound);
         youWinText.SetActive(true);
+          // Stop the timer
+    
         HideAllGameObjects();
         StartCoroutine(GameOverSequence());
 
