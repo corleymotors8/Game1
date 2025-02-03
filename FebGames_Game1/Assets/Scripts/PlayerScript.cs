@@ -1,6 +1,7 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections;
 
 
 public class PlayerScript : MonoBehaviour
@@ -11,7 +12,7 @@ public class PlayerScript : MonoBehaviour
     public AudioClip stompSound;
     private bool isJumping = false;
     public bool isFalling = false;
-    private bool onBat = false;
+    public bool onBat = false;
     public float batSpeed = 5.0f;
     private bool previousFallingState;
     public float fallThreshold = 0.0f;  // Threshold for detecting falling
@@ -122,17 +123,6 @@ public class PlayerScript : MonoBehaviour
         }
 }
 
-private void StopRidingBat()
-{
-    onBat = false;
-    transform.SetParent(null);
-    currentBatRb = null;
-     // Reset friction to 0 by using a new material
-    PhysicsMaterial2D normalMaterial = new PhysicsMaterial2D("NormalMaterial");
-    normalMaterial.friction = 0.0f;
-    GetComponent<Collider2D>().sharedMaterial = normalMaterial;
-}
-
 private void Flip()
 {
     isFacingRight = !isFacingRight;
@@ -158,9 +148,7 @@ private void Flip()
     }
    }
    
-  
-
-  
+   
    private void OnCollisionEnter2D(Collision2D collision)
 {
         // Jump Detection
@@ -173,26 +161,7 @@ private void Flip()
            //animator.SetBool("isJumping", !isGrounded);
            audioSource.PlayOneShot(landSound, landVolume);
        }
-
-       // If rideable bat change player friction and control bat
-        var enemy = collision.gameObject.GetComponent<BatFlapScript>(); // Access bat script
-         if (collision.gameObject.CompareTag("RideableEnemy") && enemy.isRidable)
-         {
-            Debug.Log("Collided with rideable bat");
-            onBat = true;
-            currentBatRb = collision.gameObject.GetComponent<Rigidbody2D>();
-            transform.SetParent(collision.transform);
-
-            //change player's material to be high friction
-             // Clone the material and set friction
-            PhysicsMaterial2D tempMaterial = new PhysicsMaterial2D("TemporaryMaterial");
-            tempMaterial.friction = 100.0f;
-            GetComponent<Collider2D>().sharedMaterial = tempMaterial;
-            //Trasnform enemy position with inputs for player
-
-         }
-        
-        
+         // Handle enemy detection     
         if (collision.gameObject.CompareTag("Enemy"))
         {
             // Check if StompCheck exists and enemy has been stomped
@@ -225,7 +194,45 @@ private void Flip()
                 GameObject.FindFirstObjectByType<BatFlapScript>().Die();
             }
         }
+
+        // Handle bat riding
+        if (isFalling && collision.gameObject.CompareTag("RideableEnemy"))
+        {
+            RidingBatFunction(collision.collider);
+        }
     }
+
+    void RidingBatFunction(Collider2D collision)
+    {
+            Debug.Log("Riding bat function triggered");
+            onBat = true;
+            currentBatRb = collision.gameObject.GetComponent<Rigidbody2D>();
+           // Set player on top of middle of bat
+           transform.position = new Vector3(collision.transform.position.x + 0.3f, collision.transform.position.y + .5f, collision.transform.position.z);
+            StartCoroutine(SetParentDelayed(collision.gameObject.transform));
+            
+            //Adjust friction
+            PhysicsMaterial2D FrictionMaterial = new PhysicsMaterial2D("FrictionMaterial");
+            FrictionMaterial.friction = 100.0f;
+            GetComponent<Collider2D>().sharedMaterial = FrictionMaterial;
+    }
+
+private IEnumerator SetParentDelayed(Transform parentTransform)
+{
+    yield return null;  // Wait for one frame
+    transform.SetParent(parentTransform);
+}
+
+    private void StopRidingBat()
+{
+    onBat = false;
+    transform.SetParent(null);
+    currentBatRb = null;
+     // Reset friction to 0 by using a new material
+    PhysicsMaterial2D normalMaterial = new PhysicsMaterial2D("NormalMaterial");
+    normalMaterial.friction = 0.0f;
+    GetComponent<Collider2D>().sharedMaterial = normalMaterial;
+}
 
 void DestroyPlayer()
 {

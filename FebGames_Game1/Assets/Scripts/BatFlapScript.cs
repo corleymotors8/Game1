@@ -55,9 +55,15 @@ public class BatFlapScript : MonoBehaviour
         if (transform.position.x == playerLocation.position.x && transform.position.y > playerLocation.position.y)
         {
             Debug.Log("Dive bombing");
-            isDiveBombing = true;
+            Invoke("TimeToDiveBomb", 0.5f);
         }
     }
+    }
+
+    private void TimeToDiveBomb()
+    {
+        isDiveBombing = true;
+        // Play divebomb sound
     }
 
     private IEnumerator FlapAndFall()
@@ -108,29 +114,17 @@ public class BatFlapScript : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-         // Check if the collided object is a big rideable bat
-        if (collision.gameObject.CompareTag("RideableEnemy"))
-        {
-        Debug.Log("Small bat collided with the big bat! Destroying itself.");
-        Die();
-        }
-
-        // Reset hover state when the bat collides with the ground
+       
+         // Reset hover state when the bat collides with the ground
         if (collision.gameObject.CompareTag("Ground") && !isBigBat)
         {
+            Debug.Log("Collided with ground");
             isDiveBombing = false;
             isHovering = true;
             // Debug.Log("Resetting isHover to true");
             flapStrength = 14.0f;
             // Debug.Log("Starting push left-right");
             StartCoroutine(PushLeftPushRight());
-            Invoke("ResetFlapStrength", 1.5f);
-        }
-        else if (collision.gameObject.CompareTag("Ground") && isBigBat)
-        {
-            isHovering = false;
-            flapStrength = 14.0f;
-            //Reset flap strength
             Invoke("ResetFlapStrength", 1.5f);
         }
         // Have bats bounce off each other
@@ -153,30 +147,6 @@ public class BatFlapScript : MonoBehaviour
     {
         // Debug.Log("Resetting flap strength");
         flapStrength = 9.5f;
-    }
-
-    // Script to make the bat rideable
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        // Make bat rideable
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            isRidable = true;
-            isChasingPlayer = false;
-            Debug.Log("Bat is ridable. No longer chasing player");
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        // Make bat chase player
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            isRidable = false;
-            isChasingPlayer = true;
-            isHovering = true;
-            Debug.Log("Bat is no longer ridable. Chasing player");
-        }
     }
 
    public void Die ()

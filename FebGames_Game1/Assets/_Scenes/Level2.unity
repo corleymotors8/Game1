@@ -306,11 +306,11 @@ PrefabInstance:
       objectReference: {fileID: 6200000, guid: bd4329a40e9f1475196258efc88dcc74, type: 2}
     - target: {fileID: 5030905272761978648, guid: bae66cc4cf94842148f2d0602604ef90, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.24
+      value: 27.2
       objectReference: {fileID: 0}
     - target: {fileID: 5030905272761978648, guid: bae66cc4cf94842148f2d0602604ef90, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.98
+      value: -6.8
       objectReference: {fileID: 0}
     - target: {fileID: 5030905272761978648, guid: bae66cc4cf94842148f2d0602604ef90, type: 3}
       propertyPath: m_LocalPosition.z
@@ -374,6 +374,10 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1161756937914111356, guid: f1e0b759f4548449fb2407d25cfb0a67, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1791979447428161415, guid: f1e0b759f4548449fb2407d25cfb0a67, type: 3}
       propertyPath: m_LocalScale.x
       value: 19.709059
@@ -388,11 +392,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1791979447428161415, guid: f1e0b759f4548449fb2407d25cfb0a67, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.53
+      value: -8.6
       objectReference: {fileID: 0}
     - target: {fileID: 1791979447428161415, guid: f1e0b759f4548449fb2407d25cfb0a67, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.25
+      value: -5.8
       objectReference: {fileID: 0}
     - target: {fileID: 1791979447428161415, guid: f1e0b759f4548449fb2407d25cfb0a67, type: 3}
       propertyPath: m_LocalPosition.z
@@ -436,7 +440,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2047730559610956380, guid: f1e0b759f4548449fb2407d25cfb0a67, type: 3}
       propertyPath: isHovering
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2047730559610956380, guid: f1e0b759f4548449fb2407d25cfb0a67, type: 3}
       propertyPath: flapInterval
@@ -444,11 +448,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2047730559610956380, guid: f1e0b759f4548449fb2407d25cfb0a67, type: 3}
       propertyPath: flapStrength
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2047730559610956380, guid: f1e0b759f4548449fb2407d25cfb0a67, type: 3}
       propertyPath: isChasingPlayer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2477808218932335716, guid: f1e0b759f4548449fb2407d25cfb0a67, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[5].x
+      value: -0.048363827
+      objectReference: {fileID: 0}
+    - target: {fileID: 2477808218932335716, guid: f1e0b759f4548449fb2407d25cfb0a67, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[5].y
+      value: -0.062498726
+      objectReference: {fileID: 0}
+    - target: {fileID: 2477808218932335716, guid: f1e0b759f4548449fb2407d25cfb0a67, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.data[6].y
+      value: -0.06717983
       objectReference: {fileID: 0}
     - target: {fileID: 4520126940200010994, guid: f1e0b759f4548449fb2407d25cfb0a67, type: 3}
       propertyPath: m_Name
@@ -458,13 +474,17 @@ PrefabInstance:
       propertyPath: m_TagString
       value: RideableEnemy
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2047730559610956380, guid: f1e0b759f4548449fb2407d25cfb0a67, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1791979447428161415, guid: f1e0b759f4548449fb2407d25cfb0a67, type: 3}
       insertIndex: -1
       addedObject: {fileID: 683750405}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4520126940200010994, guid: f1e0b759f4548449fb2407d25cfb0a67, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 814677968}
   m_SourcePrefab: {fileID: 100100000, guid: f1e0b759f4548449fb2407d25cfb0a67, type: 3}
 --- !u!1001 &675651252
 PrefabInstance:
@@ -551,7 +571,7 @@ GameObject:
   - component: {fileID: 683750406}
   m_Layer: 0
   m_Name: MakeRideable
-  m_TagString: Untagged
+  m_TagString: RideEnemyDetector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -565,7 +585,7 @@ Transform:
   m_GameObject: {fileID: 683750404}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.013, y: 0.025, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -601,12 +621,12 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0015707844, y: 0.042637106}
-  m_Size: {x: 0.29542753, y: 0.0372366}
+  m_Offset: {x: -0.0024937228, y: 0.04263709}
+  m_Size: {x: 0.21976161, y: 0.037236627}
   m_Direction: 1
 --- !u!1 &723587805
 GameObject:
@@ -640,6 +660,35 @@ Transform:
   - {fileID: 565207158}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &814677962 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4520126940200010994, guid: f1e0b759f4548449fb2407d25cfb0a67, type: 3}
+  m_PrefabInstance: {fileID: 644536353}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &814677968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814677962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28856aa29bf7846499b45f153e0917b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flapStrength: 10
+  flapInterval: 0.15
+  isHovering: 1
+  isFlapping: 0
+  batSpeed: 2
+  pushDownForce: 5
+  isChasingPlayer: 1
+  isRidable: 0
+  isBigBat: 0
+  deathSound: {fileID: 0}
+  spawn: {fileID: 0}
+  flap: {fileID: 0}
 --- !u!1001 &1028439733
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1189,7 +1238,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 335322552097150753, guid: 534e31d16195c470095832755be03312, type: 3}
       propertyPath: maxSpawns
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4127601094731799957, guid: 534e31d16195c470095832755be03312, type: 3}
       propertyPath: m_LocalPosition.x
