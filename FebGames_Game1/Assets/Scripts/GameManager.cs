@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public Vector3 respawnPosition;
     public int playerLives;
     private bool isRespawning = false;
+
+    public int enemiesKilled = 0;
     public GameObject gameOverText;  // Assign your "GAME OVER" text GameObject here
     public GameObject youWinText;
     private Timer timerUI;
@@ -20,7 +22,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
     playerLives = PlayerPrefs.GetInt("PlayerLives", 3); // Default to 3 if not set
-    Debug.Log("Player starts with " + playerLives + " lives.");
+    // Debug.Log("Player starts with " + playerLives + " lives.");
     }
     
     void Start()
@@ -88,6 +90,23 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");  // Replace with your actual menu scene name
     }
 
+    public void WinGame()
+    {
+        GameObject.Find("BackgroundMusic").GetComponent<AudioSource>().Stop();
+        audioSource.PlayOneShot(winSound, 0.4f);
+        youWinText.SetActive(true);
+          // Stop the timer
+    
+        HideAllGameObjects();
+        StartCoroutine(GameOverSequence());
+    }
+
+    public void IncrementEnemiesKilled()
+    {
+        enemiesKilled++;
+        Debug.Log("Enemies killed: " + enemiesKilled);
+    }
+
     void RespawnPlayer()
     {
         audioSource = GetComponent<AudioSource>();
@@ -95,13 +114,31 @@ public class GameManager : MonoBehaviour
         {
             audioSource = gameObject.AddComponent<AudioSource>();
         }
-        audioSource.PlayOneShot(respawnSound, 0.3f);
+        audioSource.PlayOneShot(respawnSound, 0.2f);
         GameObject player = GameObject.FindWithTag("Player");  // Find player by tag
         player.transform.position = respawnPosition;  // Move player to respawn location
         player.GetComponent<SpriteRenderer>().enabled = true;  // Make the player visible
-        isRespawning = false;  // Reset respawn flag
+        player.GetComponent<PlayerScript>().isImmune = true;  // Activate immunity
+        StartCoroutine(HandleImmunity(player));  // Start flashing effect and immunity timer
 
+        isRespawning = false;  // Reset respawn flag
     }
+
+    private IEnumerator HandleImmunity(GameObject player)
+{
+    SpriteRenderer playerRenderer = player.GetComponent<SpriteRenderer>();
+    float immunityDuration = 5f;
+    float flashInterval = 0.2f;
+
+    for (float timer = 0; timer < immunityDuration; timer += flashInterval)
+    {
+        playerRenderer.enabled = !playerRenderer.enabled;  // Toggle visibility
+        yield return new WaitForSeconds(flashInterval);
+    }
+
+    playerRenderer.enabled = true;  // Ensure player is visible
+    player.GetComponent<PlayerScript>().isImmune = false;  // End immunity
+}
 
     void HideAllGameObjects()
 {
@@ -114,17 +151,6 @@ public class GameManager : MonoBehaviour
         renderer.enabled = false;
     }
 }
-    public void WinGame()
-    {
-        GameObject.Find("BackgroundMusic").GetComponent<AudioSource>().Stop();
-        audioSource.PlayOneShot(winSound);
-        youWinText.SetActive(true);
-          // Stop the timer
     
-        HideAllGameObjects();
-        StartCoroutine(GameOverSequence());
-
-
-    }
 
 }

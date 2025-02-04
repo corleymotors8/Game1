@@ -51,7 +51,7 @@ public class KillZone : MonoBehaviour
     
     // Call the Game Manager PlayerDied function and "destroy" the player 
     gameManager?.PlayerDied();
-    GetComponent<SpriteRenderer>().enabled = false;;
+    // GetComponent<SpriteRenderer>().enabled = false;
     
 }
 }

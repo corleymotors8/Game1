@@ -12,6 +12,7 @@ public class PlayerScript : MonoBehaviour
     public AudioClip stompSound;
     private bool isJumping = false;
     public bool isFalling = false;
+    public bool isImmune = false;
     public bool onBat = false;
     public float batSpeed = 5.0f;
     private bool previousFallingState;
@@ -151,6 +152,8 @@ private void Flip()
    
    private void OnCollisionEnter2D(Collision2D collision)
 {
+    Vector2 relativePosition = transform.position - collision.transform.position; // check if player is above the enemy
+
         // Jump Detection
        if (collision.gameObject.CompareTag("Ground"))
        {
@@ -161,39 +164,50 @@ private void Flip()
            //animator.SetBool("isJumping", !isGrounded);
            audioSource.PlayOneShot(landSound, landVolume);
        }
-         // Handle enemy detection     
-        if (collision.gameObject.CompareTag("Enemy"))
+         
+         // Handle enemy detection when jumping onto (i.e. falling)
+ 
+        if (collision.gameObject.CompareTag("Enemy") && isFalling && relativePosition.y > 0)
+                 // Kill bats
+                { 
+                BatFlapScript batFlapScript = collision.gameObject.GetComponent<BatFlapScript>();
+                if (batFlapScript != null)
+                    {
+                    batFlapScript.Die();  // Call Die() on the correct bat instance
+                    audioSource.PlayOneShot(stompSound, 0.05f);
+                    GameManager gameManager = GameObject.FindFirstObjectByType<GameManager>();
+                    gameManager.IncrementEnemiesKilled();
+
+                    }
+                {
+                // Kill regular enemies
+                Destroy(collision.gameObject);
+                audioSource.PlayOneShot(stompSound, 0.05f);
+                GameManager gameManager = GameObject.FindFirstObjectByType<GameManager>();
+                gameManager.IncrementEnemiesKilled();
+                }
+                }
+
+        // Handle enemy detection when colliding in air while falling
+
+        if (!isImmune && collision.gameObject.CompareTag("Enemy") && isFalling && relativePosition.y < 0)
         {
-            // Check if StompCheck exists and enemy has been stomped
-            var stompCheck = collision.gameObject.GetComponentInChildren<StompCheck>();
-            
-            // If StompCheck exists and enemy has been stomped
-            if (stompCheck != null && stompCheck.isStomped)
-            {
-                audioSource.PlayOneShot(stompSound);
-                stompCheck.isStomped = false;
-            }
-            // Trigger player death if not stomped
-            else if (stompCheck != null && !stompCheck.isStomped)
-            {
+            // Trigger player death
             GameObject.FindFirstObjectByType<LifeCountScript>().LoseLife();
             Debug.Log("Lose Life called");
-            audioSource.PlayOneShot(deathSound, 0.1f);
+            audioSource.PlayOneShot(deathSound, 0.025f);
+            Invoke("DestroyPlayer", 0.1f);
+        }
+        
+        // Handle enemy detection when on ground 
+
+        if (!isImmune && collision.gameObject.CompareTag("Enemy") && !isFalling && !onBat) 
+            {   
+            GameObject.FindFirstObjectByType<LifeCountScript>().LoseLife();
+            Debug.Log("Lose Life called");
+            audioSource.PlayOneShot(deathSound, 0.025f);
             Invoke("DestroyPlayer", 0.1f);
             }
-            
-            // Trigger player death if no StompCheck (i.e. bats)
-            else if (stompCheck == null & !isJumping & !isFalling)
-            {
-                audioSource.PlayOneShot(deathSound, 0.025f);
-                Invoke("DestroyPlayer", 0.1f);
-            }
-            else if (stompCheck == null & isJumping & !isFalling)
-            {
-                // Trigger bat enemy's death function
-                GameObject.FindFirstObjectByType<BatFlapScript>().Die();
-            }
-        }
 
         // Handle bat riding
         if (isFalling && collision.gameObject.CompareTag("RideableEnemy"))
@@ -201,7 +215,7 @@ private void Flip()
             RidingBatFunction(collision.collider);
         }
     }
-
+    
     void RidingBatFunction(Collider2D collision)
     {
             Debug.Log("Riding bat function triggered");
@@ -234,7 +248,7 @@ private IEnumerator SetParentDelayed(Transform parentTransform)
     GetComponent<Collider2D>().sharedMaterial = normalMaterial;
 }
 
-void DestroyPlayer()
+public void DestroyPlayer()
 {
     GameManager gameManager = GameObject.FindFirstObjectByType<GameManager>();
     if (gameManager != null)

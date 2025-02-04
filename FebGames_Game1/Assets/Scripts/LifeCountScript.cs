@@ -22,8 +22,8 @@ public class LifeCountScript : MonoBehaviour
     }
 
     numberPlayerLives = gameManager.playerLives;
-    Debug.Log("Player lives from GameManager: " + numberPlayerLives);
-    Debug.Log("Total life icons: " + lives.Length);
+    // Debug.Log("Player lives from GameManager: " + numberPlayerLives);
+    // Debug.Log("Total life icons: " + lives.Length);
 
     for (int i = numberPlayerLives; i < lives.Length; i++)
     {
@@ -46,15 +46,6 @@ public class LifeCountScript : MonoBehaviour
             Debug.Log("Out of lives");
         }
         }
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            LoseLife();
-        }
-
     }
 
 }

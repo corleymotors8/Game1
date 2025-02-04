@@ -7,7 +7,7 @@ public class Enemy2Script : MonoBehaviour
     public AudioClip landSound;
     public AudioClip killSound;
     AudioSource audioSource;
-    public float landVolume = 1.0f;
+    private float landVolume = 0.1f;
     public float fallSpeed = 4f;  // How fast the block falls
     public float riseSpeed = 2f; // How fast the block rises
     public float waitTime = 2f;  // How long the block waits on the ground
@@ -18,7 +18,7 @@ public class Enemy2Script : MonoBehaviour
 
     // Private variables to track state
     private Vector3 initialPosition;  // Starting position of the block
-    public bool isFalling = true;    // Whether the block is currently falling
+    public bool isFalling = false;    // Whether the block is currently falling
     public bool isRising = false;    // Whether the block is currently rising
 
     // Blood prefab
@@ -29,6 +29,8 @@ public class Enemy2Script : MonoBehaviour
 
     void Start()
     {
+        isFalling = false;
+        // Debug.Log("Is falling? " + isFalling);
         rb = GetComponent<Rigidbody2D>();
         initialPosition = transform.position;
         audioSource = GetComponent<AudioSource>();
@@ -45,15 +47,7 @@ public class Enemy2Script : MonoBehaviour
         }
 
     }
-
     }
-
-    IEnumerator WaitAndRise()
-    {
-        yield return new WaitForSeconds(waitTime); // Wait on the ground
-        isRising = true;
-    }
-
 void Update()
 {
     if (isFalling)
@@ -75,8 +69,8 @@ void Update()
         // Move the block upward
         transform.position += Vector3.up * riseSpeed * Time.deltaTime;
 
-        // Stop rising when the block reaches its initial position
-        if (transform.position.y >= initialPosition.y)
+        // Stop rising when the block reaches just below its initial position
+        if (transform.position.y >= initialPosition.y - 0.5f)
         {
             isRising = false;
             isFalling = true; // Prepare for the next cycle
@@ -84,5 +78,28 @@ void Update()
     }
 }
 
+ IEnumerator WaitAndRise()
+    {
+        yield return new WaitForSeconds(waitTime); // Wait on the ground
+        isRising = true;
+    }
 
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Debug.Log("Triggering is falling");
+        if (collision.CompareTag("Player"))
+        {
+            isFalling = true;
+        }
+    }
+
+    /// OPTIONAL - Uncomment this method to stop the block from falling when the player leaves the trigger
+    // void OnTriggerExit2D(Collider2D collision)
+    // {
+    //     if (collision.CompareTag("Player"))
+    //     {
+    //        Debug.Log("Triggering is not falling");
+    //         isFalling = false;
+    //     }
+    // }
 }

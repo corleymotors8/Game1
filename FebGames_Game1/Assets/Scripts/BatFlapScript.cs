@@ -13,8 +13,10 @@ public class BatFlapScript : MonoBehaviour
     public bool isChasingPlayer = false;
     public bool isRidable = false; // Check if the bat is ridable
     public bool isBigBat = false; // use to change parameters for big bats
+    private float batDestroyDelay = 0.1f;
     AudioSource audioSource;
     public AudioClip deathSound;
+    public AudioClip diveBombSound;
     public AudioClip spawn;
     public AudioClip flap;
     private Transform playerLocation;
@@ -54,7 +56,9 @@ public class BatFlapScript : MonoBehaviour
         // Dive bomb if close to the player and above
         if (transform.position.x == playerLocation.position.x && transform.position.y > playerLocation.position.y)
         {
-            Debug.Log("Dive bombing");
+            // Freeze bat preparation for divebomb
+            isChasingPlayer = false;
+            // Debug.Log("Dive bombing");
             Invoke("TimeToDiveBomb", 0.5f);
         }
     }
@@ -63,7 +67,7 @@ public class BatFlapScript : MonoBehaviour
     private void TimeToDiveBomb()
     {
         isDiveBombing = true;
-        // Play divebomb sound
+        audioSource.PlayOneShot(diveBombSound, 0.3f);
     }
 
     private IEnumerator FlapAndFall()
@@ -95,37 +99,28 @@ public class BatFlapScript : MonoBehaviour
         isFlapping = false;
     }
 
+   
     private void PushDown()
 {
+    // Push down if at top of screen
     rb.AddForce(Vector2.down * pushDownForce, ForceMode2D.Impulse);
 }
 
-    // private void DiveBomb()
-    // {
-    //     isHovering = false;
-    //     // Accelerate fall if bag bat
-    // if (isBigBat)
-    // {
-    //     // Apply a downward force to accelerate the fall
-    //     // rb.AddForce(Vector2.down, ForceMode2D.Impulse);  // Adjust the force as needed
-    // }
-    // }
-
-    
+  
     private void OnCollisionEnter2D(Collision2D collision)
     {
        
          // Reset hover state when the bat collides with the ground
-        if (collision.gameObject.CompareTag("Ground") && !isBigBat)
+        if (collision.gameObject.CompareTag("Ground"))
         {
-            Debug.Log("Collided with ground");
+            // Debug.Log("Collided with ground");
             isDiveBombing = false;
             isHovering = true;
-            // Debug.Log("Resetting isHover to true");
-            flapStrength = 14.0f;
-            // Debug.Log("Starting push left-right");
+            isChasingPlayer = true;
+            // Debug.Log("Resetting bat to chase player");
+            flapStrength = 0.0f;
             StartCoroutine(PushLeftPushRight());
-            Invoke("ResetFlapStrength", 1.5f);
+            Invoke("ResetFlapStrength", 3.0f);
         }
         // Have bats bounce off each other
         if (collision.gameObject.CompareTag("Enemy"))
@@ -136,24 +131,40 @@ public class BatFlapScript : MonoBehaviour
 
     private IEnumerator PushLeftPushRight()
     {
-        rb.AddForce(Vector2.left * 5.0f, ForceMode2D.Impulse);
+        rb.AddForce(Vector2.left * 3.0f, ForceMode2D.Impulse);
         // Debug.Log("Pushing left");
-        yield return new WaitForSeconds(0.5f);
-        rb.AddForce(Vector2.right * 5.0f, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(0.2f);
+        rb.AddForce(Vector2.right * 3.0f, ForceMode2D.Impulse);
         // Debug.Log("Pushing right");
     }
 
     private void ResetFlapStrength()
     {
         // Debug.Log("Resetting flap strength");
-        flapStrength = 9.5f;
+        flapStrength = 15.5f;
     }
 
    public void Die ()
     {
         // Play the death sound on the existing audio source
-    audioSource.PlayOneShot(deathSound);
+    audioSource.PlayOneShot(deathSound, 0.8f);
     // Debug.Log("Playing death sound");
+
+    // Increment the total killed count in BatsNestScript
+    BatsNestScript nestScript = FindFirstObjectByType<BatsNestScript>();
+    if (nestScript != null)
+    {
+        nestScript.totalKilledCount++;
+        nestScript.spawnCount--;
+    }
+    
+    StartCoroutine("WaitBeforeDestroy");
+    }
+
+    private IEnumerator WaitBeforeDestroy()
+    {
+
+    yield return new WaitForSeconds(batDestroyDelay);  // Wait for the sound to finish
 
     // Disable enemy visuals (prevent further interactions)
     GetComponent<Collider2D>().enabled = false;
@@ -166,5 +177,6 @@ public class BatFlapScript : MonoBehaviour
     //Decrement spawnCounter
     GameObject.FindFirstObjectByType<BatsNestScript>().spawnCount--;
 
+    yield break;
     }
 }

@@ -30,9 +30,9 @@ private bool _shouldMove = false;
     
     public void Start()
     {
-        Debug.Log("Should move? " + shouldMove);
+        // Debug.Log("Should move? " + shouldMove);
         rb = GetComponent<Rigidbody2D>();
-        Debug.Log("Enemy gravity scale: " + rb.gravityScale);
+        // Debug.Log("Enemy gravity scale: " + rb.gravityScale);
         Vector3 startPosition = transform.position;
     }
     
@@ -85,19 +85,6 @@ private bool _shouldMove = false;
 
         if (shouldMove)
 {
-    Debug.Log($"Enemy Debug Log - " +
-              $"ShouldMove: {shouldMove}, " +
-              $"Speed: {speed}, " +
-              $"Velocity: {rb.linearVelocity}, " +
-              $"Position: {transform.position}, " +
-              $"LeftBound: {leftBound}, " +
-              $"RightBound: {rightBound}, " +
-              $"MoveLeft: {moveLeft}, " +
-              $"Moved: {moved}, " +
-              $"Direction: {direction}, " +
-              $"GroundEnemy: {groundEnemy}, " +
-              $"ChasePlayer: {chasePlayer}, " +
-              $"GravityScale: {rb.gravityScale}");
 }
     }
 

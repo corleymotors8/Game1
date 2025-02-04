@@ -29,7 +29,7 @@ public class Cannon : MonoBehaviour
 
     void Update()
     {
-        //Firing rate based on nearby falling enemy
+        // Firing rate based on nearby falling enemy
         if (enemy != null)
         {
         bool enemyAboveThreshold = (enemy != null && enemy.isRising && enemy.transform.position.y > enemyHeightThreshold);
@@ -41,7 +41,9 @@ public class Cannon : MonoBehaviour
             nextFireTime = Time.time + fireRate; // Reset fire cooldown
         }
         }
-        //Firing rate WITHOUT nearby falling enemy
+
+
+        // Firing rate WITHOUT nearby falling enemy
         else if (enemy == null && isPlayerInRange && Time.time >= nextFireTime)
         {
             FireCannonball();
@@ -70,7 +72,7 @@ public class Cannon : MonoBehaviour
         {
             rb.AddForce(spawnPoint.right * fireForce, ForceMode2D.Impulse);
         }
-        audioSource.PlayOneShot(cannonSound, .2f);
+        audioSource.PlayOneShot(cannonSound, .1f);
     }
 
     // Detect when the player enters the trigger area

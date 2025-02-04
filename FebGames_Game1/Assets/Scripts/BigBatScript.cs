@@ -7,6 +7,7 @@ public class BigBatScript : MonoBehaviour
     public float flapInterval = 1.0f;
     public bool isHovering = true;
     public bool isFlapping = false;
+    public bool isStationaryTarget = true;
     private bool isDiveBombing = false; 
     public float batSpeed = 2.0f;
     public float pushDownForce = 10f;
@@ -16,6 +17,7 @@ public class BigBatScript : MonoBehaviour
     AudioSource audioSource;
     private Transform batsNestScript;
     public AudioClip deathSound;
+    public AudioClip PlayerRiding;
     public AudioClip spawn;
     public AudioClip flap;
     private Transform playerLocation;
@@ -28,6 +30,16 @@ public class BigBatScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created 
     void Start()
     {
+       Animator animator = GetComponent<Animator>();
+       
+       // Disable animation at first for stationary target
+       if (isStationaryTarget)
+       {
+           animator.enabled = false;  // Disable animation at the start
+       }
+       animator.enabled = false;  // Disable animation at the start
+       
+       
        batFlapScript = GameObject.FindFirstObjectByType<BatFlapScript>();
        GameObject player = GameObject.Find("Player");
        playerScript = player.GetComponent<PlayerScript>();
@@ -44,34 +56,34 @@ public class BigBatScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    // audioSource.PlayOneShot(flap);
-    // Hover behavior; send to FlapAndFall Coroutine
-    
-    if (!isRidable)
-    {
-    if (isHovering && !isFlapping && !isDiveBombing && !isRidable)
-    {
-    StartCoroutine(FlapAndFall());
-    }
-    // Chase behavior
-    // Debug.Log($"isChasingPlayer: {isChasingPlayer}, Player position: {playerLocation.position}, Bat position: {transform.position}");
-    
-    if (isChasingPlayer & !isDiveBombing && !isRidable)
-    {
-    // Move the bat toward the player's x position
-    Vector3 targetPosition = new Vector3(playerLocation.position.x, transform.position.y, transform.position.z);
-    transform.position = Vector3.MoveTowards(transform.position, targetPosition, batSpeed * Time.deltaTime);
-        // Dive bomb if close to the player and above
-        if (transform.position.x == playerLocation.position.x && transform.position.y > playerLocation.position.y)
+    if (!isStationaryTarget) // If the bat spawns with AI, or just sits there waiting for player
         {
-            Debug.Log("Dive bombing");
-            isDiveBombing = true;
+        if (!isRidable)
+        {
+            if (isHovering && !isFlapping && !isDiveBombing && !isRidable)
+            {
+            StartCoroutine(FlapAndFall());
+            }
+            // Chase behavior
+            // Debug.Log($"isChasingPlayer: {isChasingPlayer}, Player position: {playerLocation.position}, Bat position: {transform.position}");
+    
+            if (isChasingPlayer & !isDiveBombing && !isRidable)
+            {
+            // Move the bat toward the player's x position
+            Vector3 targetPosition = new Vector3(playerLocation.position.x, transform.position.y, transform.position.z);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, batSpeed * Time.deltaTime);
+            // Dive bomb if close to the player and above
+                if (transform.position.x == playerLocation.position.x && transform.position.y > playerLocation.position.y)
+                {
+                // Debug.Log("Dive bombing");
+                isDiveBombing = true;
+                }
+            }
+        }
         }
     }
-    }
-    }
 
-    private IEnumerator FlapAndFall()
+    private IEnumerator FlapAndFall() // Only happens if bat has AI (not is stationary target)
     {
         isFlapping = true;
         isDiveBombing = false;
@@ -80,7 +92,7 @@ public class BigBatScript : MonoBehaviour
         // Push down if at top of screen
         if (transform.position.y > batsNestScript.position.y)
         {
-            Debug.Log("Pushing down");
+            // Debug.Log("Pushing down");
             PushDown();
         }
          // Stop any currently playing sound to prevent overlapping
@@ -109,54 +121,84 @@ public class BigBatScript : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-         // If player is falling make bat rideable
-        if (playerScript.isFalling && collision.gameObject.CompareTag("Player"))
-        MakeBatRidable();
-         
-         // Destroy enemy bats if player is riding them
-       if (playerScript.onBat && collision.gameObject.CompareTag("Enemy"))
+       //// IF BAT STARTS AS STATIONARY TARGET
+       // Kill enemies collided with (already assumes player on bat)
+        if (playerScript.onBat && collision.gameObject.CompareTag("Enemy"))
         {
             batFlapScript = collision.gameObject.GetComponent<BatFlapScript>();
             if (batFlapScript != null)
                 {
                 batFlapScript.Die();
+                GameManager gameManager = GameObject.FindFirstObjectByType<GameManager>();
+                gameManager.IncrementEnemiesKilled();
                 }
             else
                 {
                 Debug.LogWarning($"BatFlapScript not found on object {collision.gameObject.name}");
                 }
-}
-
-        // Add force to collision enemy bats if player not riding the bat
-       if (!playerScript.onBat && collision.gameObject.CompareTag("Enemy"))
+        }
+        
+        // Turn on animator and play sound when player lands on bat 
+        if (collision.gameObject.CompareTag("Player") && isStationaryTarget)
         {
-        Rigidbody2D batRb = batFlapScript.GetComponent<Rigidbody2D>();
-        if (batRb != null)
-            {
-             // Apply a force to the bat, e.g., push it to the left with an impulse
-            batRb.AddForce(Vector2.left * 5.0f, ForceMode2D.Impulse);
-            }
-            else
-            {
-            Debug.LogWarning("Rigidbody2D not found on bat object!");
-            }
+            Animator animator = GetComponent<Animator>();
+            animator.enabled = true;
+            audioSource.PlayOneShot(PlayerRiding, 0.2f);
+
         }
 
+       //// IF BAT STARTS AS MOVING ENEMY
+        if (!isStationaryTarget)
+        {
+         // If player is falling make bat rideable
+        if (playerScript.isFalling && collision.gameObject.CompareTag("Player"))
+        {
+        MakeBatRidable();
+        }
+        // If player is not falling, trigger player death
+        if (!playerScript.isFalling && collision.gameObject.CompareTag("Player"))
+        {
+            GameObject.FindFirstObjectByType<LifeCountScript>().LoseLife();
+            // Debug.Log("Lose Life called");
+            playerScript.DestroyPlayer();
+        }
         // Land on ground and stay for 5 seconds
         if (collision.gameObject.CompareTag("Ground") && !isRidable)
         {
-            Debug.Log("Landed on the ground");
+            // Debug.Log("Big Bat Landed on the ground");
             isDiveBombing = false;
             isHovering = true;
             isChasingPlayer = false;
             flapStrength = 0.0f;
             Invoke("StrongFlapStrength", 3.0f);
         }
+        // Add force collision to enemy bats
+       if (!playerScript.onBat && collision.gameObject.CompareTag("Enemy"))
+            {
+            BatFlapScript batFlapScriptLocal = collision.gameObject.GetComponent<BatFlapScript>();
+            if (batFlapScriptLocal != null)
+                {
+                Rigidbody2D batRb = batFlapScriptLocal.GetComponent<Rigidbody2D>();
+                    if (batRb != null)
+                    {
+                    batRb.AddForce(Vector2.left * 5.0f, ForceMode2D.Impulse);
+                    }       
+                    else
+                    {
+                    Debug.LogWarning("Rigidbody2D not found on bat object!");
+                    }
+                }
+            else
+                {
+                Debug.LogWarning($"BatFlapScript not found on object {collision.gameObject.name}");
+                }
+            }
+        }
     }
 
     private void StrongFlapStrength()
     {
-        Debug.Log("Invoking Strong flap strength");
+        // Debug.Log("Big Bat Invoking Strong flap strength");
         flapStrength = 35.0f;
         isFlapping = true;
         isChasingPlayer = true;
@@ -165,7 +207,7 @@ public class BigBatScript : MonoBehaviour
 
     private void ResetFlapStrength()
     {
-        Debug.Log("Resetting flap strength");
+        // Debug.Log("Resetting flap strength");
         flapStrength = 12.0f;
         isFlapping = false;
     }
@@ -177,11 +219,9 @@ public class BigBatScript : MonoBehaviour
         isChasingPlayer = false;
         isFlapping = false;
         isHovering = false;
-        Debug.Log("Bat is ridable. No longer chasing player");
+        // Debug.Log("Bat is ridable. No longer chasing player");
     }
 
-/// Keep big bat unkillable for now
-//    public void Die ()
 //     {
 //         // Play the death sound on the existing audio source
 //     audioSource.PlayOneShot(deathSound);
